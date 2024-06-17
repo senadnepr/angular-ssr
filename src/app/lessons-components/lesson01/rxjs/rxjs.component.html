@@ -1,0 +1,43 @@
+<h1>Comments</h1>
+
+<button mat-raised-button color="primary" (click)="actionGetAllComments()">Subscribed</button>
+<button mat-stroked-button color="primary"  (click)="actionGetAllCommentsAsync()">Async pipe</button>
+<button mat-raised-button color="warn"  (click)="actionError()">Error</button>
+<button mat-raised-button color="primary"  (click)="of123()">of123</button>
+<button mat-raised-button color="primary"  (click)="from123()">from123</button>
+<button mat-raised-button color="primary"  (click)="concat()">concat</button>
+
+<ng-container *ngIf="comments">
+<h2>Subscribed</h2>
+<p *ngFor="let comment of comments">
+  {{ comment.body }}
+</p>
+</ng-container>
+
+<ng-container *ngIf="$comments | async as data">
+<h2>Async pipe</h2>
+  <p *ngFor="let dataItem of data">
+    {{ dataItem.body }}
+  </p>
+</ng-container>
+
+<div *ngIf="error">
+  <h2>Error</h2>
+  <p>{{error}}</p>
+</div>
+
+<app-comments-checker></app-comments-checker>
+
+<ng-container *ngIf="result">
+  <h2>RxJS Marbles</h2>
+  <p>{{function}}</p>
+  <p *ngFor="let dataItem of result">
+    {{ dataItem }}
+  </p>
+</ng-container>
+
+<ng-container *ngIf="number">
+  <h2>RxJS Marbles</h2>
+  <p>{{function}}</p>
+  <p>{{number}}</p>
+</ng-container>
